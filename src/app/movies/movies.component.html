@@ -1,0 +1,19 @@
+<nav class="navbar bg-darkgrey">
+    <div class="container-fluid">
+        <span class="navbar-text text-salmon fs-2 fw-bold">
+            Movies List
+        </span>
+    </div>
+</nav>
+<ul class="list-group">
+    @for(m of movies; track m.id) {
+        <li class="mt-2">
+            <span class="text-darkgrey fw-bold ms-2 me-2">{{m.title}} Views:{{m.viewCount}}</span>
+            <button (click)="addView(m.id)" class="btn btn-primary me-2">Add view</button>
+            <a [routerLink]="['/', userId, 'movies', m.id]" class="btn btn-warning me-2">Update</a>
+            <button (click)="deleteMovie(m.id)" class="btn btn-danger">Delete</button>
+        </li>
+    }
+</ul>
+<a [routerLink]="['/', userId, 'movies', 'new']" class="btn btn-success mt-2 ms-1">Add new movie</a>
+<a routerLink="/" class="btn btn-secondary ms-2 mt-2">Change user</a>

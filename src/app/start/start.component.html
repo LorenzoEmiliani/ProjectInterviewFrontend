@@ -1,0 +1,17 @@
+<nav class="navbar bg-darkgrey">
+    <div class="container-fluid">
+        <span class="navbar-text text-salmon fs-2 fw-bold">
+            Users List
+        </span>
+    </div>
+</nav>
+<ul class="list-group">
+    @for(u of users; track u.id) {
+        <li class="mt-2">
+            <a [routerLink]="['/', u.id, 'movies']" class="text-darkgrey fw-bold ms-2 me-2">{{u.name}}</a>
+            <a [routerLink]="['/', u.id]" class="btn btn-warning me-2">Update</a>
+            <button (click)="deleteUser(u.id)" class="btn btn-danger">Delete</button>
+        </li>
+    }
+</ul>
+<a routerLink="/new" class="btn btn-success mt-2 ms-1">Add new user</a>

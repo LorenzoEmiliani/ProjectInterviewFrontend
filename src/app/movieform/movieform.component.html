@@ -1,0 +1,17 @@
+<nav class="navbar bg-darkgrey mb-2">
+    <div class="container-fluid">
+        <span class="navbar-text text-salmon fs-2 fw-bold">
+            {{updateMode? 'Update movie' : 'Add new movie'}}
+        </span>
+    </div>
+</nav>
+<form #movieForm="ngForm" (ngSubmit)="onSubmit(movieForm)">
+    <label for="title" class="text-darkgrey fw-bold ms-2 me-2">Title:</label>
+    <input type="text" id="title" name="title" ngModel [(ngModel)]="movie.title" required />
+    @if(!updateMode) {
+        <label for="viewCount" class="text-darkgrey fw-bold ms-2 me-2">How many times have you already seen this movie?:</label>
+        <input type="number" id="viewCount" name="viewCount" ngModel [(ngModel)]="movie.viewCount" />
+    }
+    <button type="submit" class="btn btn-success ms-2">{{updateMode? 'Update' : 'Add' }}</button>
+</form>
+<a [routerLink]="['/', userId, 'movies']" class="btn btn-secondary ms-1 mt-2">Return</a>
